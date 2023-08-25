@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <!-- Link Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cart-table table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .cart-table table tr th {
+            background-color: #fcc83f;
+            color: #172856;
+            border: none;
+            padding: 8px 0;
+            text-align: center;
+        }
+
+        .cart-table table td {
+            border: 1px solid #bbb8b8;
+            text-align: center;
+            font-size: large;
+            line-height: 10px;
+        }
+
+        .cart-table table td:nth-child(1) {
+            width: 100px;
+        }
+
+        .cart-table table td:nth-child(2),
+        .cart-table table td:nth-child(3) {
+            width: 200px;
+        }
+
+        .cart-table table td:nth-child(4),
+        .cart-table table td:nth-child(5),
+        .cart-table table td:nth-child(6) {
+            width: 170px;
+        }
+
+        .cart-table table td a {
+            color: #000;
+        }
+
+        .cart-table table td a:hover {
+            color: #fd8c66;
+        }
+
+        .cart-table table td img {
+            width: 100px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .cart-table table td input {
+            width: 70px;
+            padding: 5px 0;
+            outline: none;
+            padding-left: 5px;
+        }
+
+        @media screen and (max-width: 700px) {
+            .cart-table table th {
+                display: none;
+            }
+
+            .cart-table table {
+                width: 100%;
+            }
+
+            .cart-table table td {
+                height: 50px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                border: none;
+                padding-left: 85%;
+                padding-right: 15%;
+                border: 1px solid;
+            }
+
+            .cart-table table td img {
+                width: 40px;
+            }
+
+            .cart-table table td {
+
+                text-align: right;
+                position: relative;
+            }
+
+            .cart-table table td h4 {
+                width: 120px;
+                margin-left: -70px;
+            }
+
+            .cart-table table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                padding-left: 15px;
+                font-size: 16px;
+                font-weight: 700;
+                text-align: left;
+                color: #fd8c66;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="cart-table">
+        <table>
+            <tr>
+                <th>Remove</th>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td data-label="Remove"><a href="#"><i class="fa fa-trash-alt"></i></a></td>
+                <td data-label="Image"><img src="img/item1.jpg" alt=""></td>
+                <td data-label="Product">
+                    <h4>Men T-shirt</h4>
+                </td>
+                <td data-label="Price">
+                    <h5>Rs. <span class="price">120</span></h5>
+                </td>
+                <td data-label="Quantity"><input type="number" min="1" max="50" value="1" class="quantity"></td>
+                <td data-label="Total">
+                    <h5>Rs. <span class="total">120</span></h5>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Remove"><a href="#"><i class="fa fa-trash-alt"></i></a></td>
+                <td data-label="Image"><img src="img/item1.jpg" alt=""></td>
+                <td data-label="Product">
+                    <h4>Men T-shirt</h4>
+                </td>
+                <td data-label="Price">
+                    <h5>Rs. <span class="price">150</span></h5>
+                </td>
+                <td data-label="Quantity"><input type="number" min="1" max="50" value="1" class="quantity"></td>
+                <td data-label="Total">
+                    <h5>Rs. <span class="total">150</span></h5>
+                </td>
+            </tr>
+        </table>
+    </section>
+ 
+    <script>
+        let quantities = document.querySelectorAll(".quantity");
+        let prices = document.querySelectorAll(".price");
+        let total = document.querySelectorAll(".total");
+        // let del = document.querySelectorAll(".fa-trash-alt")
+        // let row = document.querySelectorAll("tr");
+
+        // del.forEach((delet, index)=>{
+        //     delet.addEventListener("click", function(){
+        //         let ind = index + 1;
+        //         row[ind].style.display = "none";
+        //     })
+        // })
+        quantities.forEach((quantity, index)=>{
+            quantity.addEventListener("change", function(){
+                if(quantity.value < 1 || quantity.value == "" || quantity.value == 0){
+                quantity.value = 1;
+            }
+                let itemPrice = parseInt(prices[index].innerHTML);
+                let itemQuantity = quantity.value;
+                total[index].innerHTML = itemPrice * itemQuantity;
+            })
+        })
+    </script>
+</body>
+
+</html>

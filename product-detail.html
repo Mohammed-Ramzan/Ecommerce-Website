@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .product-data {
+            width: 100%;
+            padding: 2rem 6rem;
+            display: flex;
+            justify-content: space-around;
+            gap: 2rem;
+        }
+        .product-images {
+            width: 340px;
+            display: flex;
+            flex-direction: column;
+        }
+        .main-imag {
+            width: 100%;
+         }
+        .main-image img {
+            width: 340px;
+            cursor: pointer;
+            box-shadow: .7px .7px 2px #e9eaf0, -.7px -.7px 2px #e9eaf0;
+            border-radius: 20px;
+            margin-bottom: .4rem;
+        }
+        .short-images {
+            display: flex;
+             gap: 6px;
+        }
+        .short-images img {
+            width: 80px;
+            cursor: pointer;
+            box-shadow: .7px .7px 2px #e9eaf0, -.5px -.7px 2px #e9eaf0;
+            border-radius: 6px;
+        }
+        .product-content {
+            width: 680px;
+            padding: 2rem;
+        }
+        .product-content .category, .product-content .category a {
+            font-size: 1.2rem;
+            color: #474343;
+            text-decoration: none;
+            transition: color .5s ease-in-out;
+        }
+        .product-content .category, .product-content .category a:hover {
+            color: #f74e4e;
+        }
+        .product-content h2 {
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+        .product-content h3 {
+            font-size: 1.7rem;
+            margin-bottom: .7rem;
+        }
+        .product-content select {
+            display: block;
+            padding: .3rem;
+            margin: 1rem 0;
+            font-weight: 500;
+            outline: none;
+        }
+        .product-content .product-quantity{
+            width: 50px;
+            padding: 3px 4px;
+            outline: none;
+        }
+        .product-content a button  {
+            background-color: #f74e4e;
+            color: #fff;
+            outline: none;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 1rem 0;
+            margin-left: 1rem;
+            text-transform: uppercase;
+            transition: background-color .5s ease-in-out;
+        }
+        .product-content a button:hover {
+            background-color: #474343
+        }
+        .product-content .product-detail h3 {
+            margin: 1rem 0;
+        }
+        .product-content .product-detail p {
+            font-size: 1.2rem;
+            line-height: 1.4rem;
+            text-align: justify;
+            color: #312f2f;
+        }
+        </style>
+</head>
+<body>
+    <section class="product-data">
+        <div class="product-images">
+            <div class="main-image">
+                <img src="img/item1.jpg" class="main" alt="">
+            </div>
+            <div class="short-images">
+                <img src="img/item2.jpg" class="small" alt="">
+                <img src="img/item1.jpg" class="small" alt="">
+                <img src="img/item4.jpg" class="small" alt="">
+                <img src="img/item5.jpg" class="small" alt="">
+            </div>
+        </div>
+        <div class="product-content">
+            <div class="category">
+                <a href="index.html">Home</a> / <a href="#">T-Shirt</a>
+            </div>
+            <h2>Men's Fashion T Shirt</h2>
+            <h3>Rs. 250.00</h3>
+            <select>
+                <option disabled selected>Select Size</option>
+                <option>XXL</option>
+                <option>XL</option>
+                <option>Large</option>
+                <option>Small</option>
+            </select>
+            <input type="number" min="1" max="50" value="1" class="product-quantity">
+            <a href="cart.html"><button>Add To Cart</button></a>
+            <div class="product-detail">
+                <h3>Product Detail</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni officiis placeat asperiores quis quidem doloremque, corporis voluptas maxime quia voluptatum aperiam provident sit ab natus optio, eveniet nesciunt quo voluptate. Iste maxime alias deserunt debitis exercitationem cupiditate optio harum dolore, blanditiis suscipit numquam corrupti minima consectetur nobis incidunt ex nemo!</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let main_image = document.querySelector(".main")
+        let short_images = document.querySelectorAll(".small");
+        short_images.forEach((short)=>{
+            short.addEventListener("click", function(){
+                main_image.src = this.src;
+            })
+        })
+    </script>
+</body>
+</html>
